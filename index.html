@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <!-- תגיות שיתוף לוואטסאפ -->
+    <meta property="og:title" content="הסכם ההשתלמויות החדש 2026">
+    <meta property="og:description" content="מדריך ומחשבון זכאות אישי לעובדי השלטון המקומי.">
+    <meta property="og:image" content="https://img.freepik.com/free-vector/professional-certificate-appreciation-template-vector_53876-173400.jpg">
+    
+    <title>הסכם ההשתלמויות החדש</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700;800&display=swap');
+        
+        body { 
+            font-family: 'Assistant', sans-serif; 
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .tab-active { 
+            background-color: #2563eb; 
+            color: white; 
+            box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3); 
+        }
+
+        input[type="range"]::-webkit-slider-thumb { 
+            appearance: none;
+            width: 28px;
+            height: 28px;
+            background: #2563eb;
+            border-radius: 50%;
+            border: 3px solid white;
+            cursor: pointer;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        
+        .animate-fade-in { 
+            animation: fadeIn 0.6s ease-out forwards; 
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .cta-pulse {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-slate-50 via-white to-blue-50 text-slate-900 min-h-screen pb-24 text-right overflow-x-hidden">
+
+    <!-- הודעת העתקה -->
+    <div id="share-toast" class="fixed top-5 left-1/2 -translate-x-1/2 z-[100] bg-slate-900 text-white px-6 py-3 rounded-full shadow-2xl transition-all duration-300 opacity-0 pointer-events-none text-center w-[85%] max-w-xs text-sm font-bold">
+        הקישור הועתק בהצלחה!
+    </div>
+
+    <div class="max-w-4xl mx-auto px-4 py-8 text-right">
+        <!-- Header -->
+        <header class="mb-10 text-center animate-fade-in">
+            <div class="inline-block bg-blue-600 text-white px-5 py-1 rounded-full text-[10px] font-black mb-5 shadow-sm uppercase tracking-widest text-center">הסכם קיבוצי 2026</div>
+            <h1 class="text-4xl md:text-6xl font-black text-blue-900 mb-3 tracking-tight leading-tight text-center">הסכם ההשתלמויות החדש</h1>
+            <p class="text-slate-500 text-lg md:text-xl font-bold max-w-2xl mx-auto text-center">כל המידע לעובדים ולעובדות במקום אחד</p>
+            
+            <button onclick="switchTab('simulator')" class="mt-6 text-blue-600 font-black flex items-center gap-2 mx-auto hover:underline justify-center">
+                למעבר ישיר למחשבון הזכאות האישי <i data-lucide="external-link" class="w-4 h-4"></i>
+            </button>
+        </header>
+
+        <!-- Navigation Tabs -->
+        <div class="flex bg-white/90 backdrop-blur-md rounded-3xl shadow-lg border border-slate-200 p-2 mb-10 sticky top-4 z-50 overflow-x-auto no-scrollbar">
+            <button onclick="switchTab('flyer')" id="tab-flyer" class="tab-active flex-1 py-4 px-3 rounded-2xl font-black flex items-center justify-center gap-2 transition-all text-base md:text-lg whitespace-nowrap">
+                <i data-lucide="info" class="w-5 h-5"></i> המדריך המלא
+            </button>
+            <button onclick="switchTab('simulator')" id="tab-simulator" class="text-slate-400 hover:text-blue-600 flex-1 py-4 px-3 rounded-2xl font-black flex items-center justify-center gap-2 transition-all text-base md:text-lg whitespace-nowrap">
+                <i data-lucide="calculator" class="w-5 h-5"></i> מה הסטטוס שלי?
+            </button>
+        </div>
+
+        <!-- Content: Flyer -->
+        <div id="content-flyer" class="space-y-10 animate-fade-in text-right">
+            <!-- Banner -->
+            <section class="bg-blue-600 p-8 rounded-3xl shadow-xl text-white relative overflow-hidden">
+                <div class="relative z-10 text-right">
+                    <h2 class="text-2xl md:text-3xl font-black flex items-center gap-3 justify-start">
+                        <i data-lucide="shield-check" class="text-blue-200"></i> בשורה לעובדים!
+                    </h2>
+                    <p class="mt-4 text-lg md:text-xl opacity-95 leading-relaxed font-bold max-w-2xl text-right">
+                        יוצאים לדרך עם הסכם השתלמויות חדש שנותן לכם תגמול כספי משמעותי על הלמידה שלכם.
+                    </p>
+                    <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="bg-white/10 p-5 rounded-2xl border border-white/20 backdrop-blur-sm flex items-start gap-3 justify-start">
+                            <i data-lucide="thumbs-up" class="shrink-0 mt-1"></i>
+                            <div class="text-right">
+                                <strong class="block text-lg">הכסף נשאר אצלכם</strong>
+                                <span class="text-sm opacity-90">גמול א' ו-ב' ממשיכים להיות משולמים כרגיל ולא מתבטלים.</span>
+                            </div>
+                        </div>
+                        <div class="bg-white/10 p-5 rounded-2xl border border-white/20 backdrop-blur-sm flex items-start gap-3 justify-start">
+                            <i data-lucide="coins" class="shrink-0 mt-1"></i>
+                            <div class="text-right">
+                                <strong class="block text-lg">תוספת לשכר</strong>
+                                <span class="text-sm opacity-90">התגמול הוא בנוסף לשכר המינימום והוא לא נשחק.</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button onclick="switchTab('simulator')" class="mt-8 bg-white text-blue-600 px-8 py-4 rounded-full font-black shadow-lg hover:bg-blue-50 transition-all flex items-center gap-2 cta-pulse mx-auto md:mx-0 justify-center">
+                        רוצים לדעת כמה מגיע לכם? למחשבון <i data-lucide="chevron-left"></i>
+                    </button>
+                </div>
+            </section>
+
+            <!-- Rewards Table -->
+            <section class="bg-emerald-50/50 p-6 md:p-8 rounded-3xl border-2 border-emerald-100 shadow-sm text-right">
+                <h3 class="text-xl md:text-2xl font-black text-emerald-900 text-center mb-8">כמה כסף מתווסף לשכר בכל חודש?</h3>
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div class="glass-card p-5 rounded-2xl shadow-md border-t-8 border-emerald-500 text-center">
+                        <div class="text-slate-400 font-black text-[10px] mb-2 uppercase text-center">רמה מקצועית 1</div>
+                        <div class="text-2xl md:text-3xl font-black text-emerald-600 my-2 text-center">300 ₪</div>
+                        <div class="text-[9px] text-slate-500 font-bold leading-tight text-center">אחרי 180 שעות ו-3 שנים</div>
+                    </div>
+                    <div class="glass-card p-5 rounded-2xl shadow-md border-t-8 border-emerald-500 text-center">
+                        <div class="text-slate-400 font-black text-[10px] mb-2 uppercase text-center">רמה מקצועית 2</div>
+                        <div class="text-2xl md:text-3xl font-black text-emerald-600 my-2 text-center">600 ₪</div>
+                        <div class="text-[9px] text-slate-500 font-bold leading-tight text-center">אחרי עוד 180 שעות ו-3 שנים</div>
+                    </div>
+                    <div class="glass-card p-5 rounded-2xl shadow-md border-t-8 border-emerald-500 text-center">
+                        <div class="text-slate-400 font-black text-[10px] mb-2 uppercase text-center">רמה מקצועית 3</div>
+                        <div class="text-2xl md:text-3xl font-black text-emerald-600 my-2 text-center">900 ₪</div>
+                        <div class="text-[9px] text-slate-500 font-bold leading-tight text-center">אחרי עוד 180 שעות ו-3 שנים</div>
+                    </div>
+                    <div class="glass-card p-5 rounded-2xl shadow-md border-t-8 border-emerald-500 text-center">
+                        <div class="text-slate-400 font-black text-[10px] mb-2 uppercase text-center">רמה מקצועית 4</div>
+                        <div class="text-2xl md:text-3xl font-black text-emerald-600 my-2 text-center">1,200 ₪</div>
+                        <div class="text-[9px] text-gray-500 font-bold leading-tight text-center">אחרי עוד 180 שעות ו-3 שנים</div>
+                    </div>
+                </div>
+                <p class="text-center text-emerald-800 font-bold mt-6 text-sm italic">הסכומים הם בנוסף לכל גמול קיים שיש לכם כיום!</p>
+            </section>
+
+            <!-- Rules -->
+            <section class="space-y-6 text-right">
+                <div class="flex items-center gap-2 px-2 justify-start">
+                    <i data-lucide="history" class="text-orange-600"></i>
+                    <h3 class="text-xl md:text-2xl font-black text-slate-800 text-right">עקרונות המעבר והזכאות:</h3>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-right">
+                    <div class="glass-card p-6 rounded-2xl border-r-8 border-blue-500 shadow-sm text-right">
+                        <strong class="text-blue-700 block mb-2 text-right">יש לי גמולים קיימים</strong>
+                        <p class="text-sm font-bold text-slate-600 text-right">גמול א' וב' ממשיכים להיות משולמים לכם כרגיל. התוספות החדשות (רמות מקצועיות) הן בנוסף למה שיש לכם.</p>
+                    </div>
+                    <div class="glass-card p-6 rounded-2xl border-r-8 border-indigo-500 shadow-sm text-right">
+                        <strong class="text-indigo-700 block mb-2 text-right">לומד עכשיו לגמול ב'</strong>
+                        <p class="text-sm font-bold text-slate-600 text-right">ניתן לסיים את הלימודים ולקבל את התוספת המלאה של 328 ₪ שתמשיך להיות משולמת לכם. לאחר מכן תעברו למסלול הרמות החדש.</p>
+                    </div>
+                    <div class="glass-card p-6 rounded-2xl border-r-8 border-emerald-500 shadow-sm text-right">
+                        <strong class="text-emerald-700 block mb-2 text-right">לומד עכשיו לגמול א'</strong>
+                        <p class="text-sm font-bold text-slate-600 text-right">ניתן להמשיך קורסים שמתחילים עד 30.6.2026. אם תסיימו את כל השעות – תקבלו גמול מלא. אם לא – תקבלו תשלום יחסי על מה שלמדתם.</p>
+                    </div>
+                    <div class="glass-card p-6 rounded-2xl border-r-8 border-orange-500 shadow-sm text-right">
+                        <strong class="text-orange-700 block mb-2 text-right">אין לי גמולים בכלל</strong>
+                        <p class="text-sm font-bold text-slate-600 text-right">אתם נכנסים ישירות למסלול הרמות המקצועיות החדש. התגמול הראשון (רמה 1) יתקבל לאחר 3 שנות עבודה ו-180 שעות לימוד.</p>
+                    </div>
+                </div>
+            </section>
+
+            <div class="p-8 bg-white border border-slate-200 rounded-3xl text-center shadow-md">
+                <p class="font-bold text-slate-700 mb-6 text-xl text-center">רוצים לבדוק את הסטטוס האישי שלכם?</p>
+                <button onclick="switchTab('simulator')" class="bg-blue-600 text-white px-12 py-5 rounded-full font-black text-2xl shadow-xl hover:scale-105 transition-all flex items-center gap-3 mx-auto justify-center">
+                    למחשבון הזכאות <i data-lucide="calculator"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Content: Simulator -->
+        <div id="content-simulator" class="hidden space-y-10 animate-fade-in glass-card p-6 md:p-10 rounded-3xl shadow-2xl border border-blue-100 text-right">
+            <h2 class="text-2xl font-black border-b border-slate-100 pb-4 flex items-center gap-2 justify-start text-right">
+                <i data-lucide="calculator" class="text-blue-600"></i> בדקו את הסטטוס שלכם
+            </h2>
+            
+            <section class="space-y-8 text-right">
+                <div>
+                    <label class="block text-lg font-black text-slate-700 mb-4 text-right">1. מתי התחלת לעבוד ברשות?</label>
+                    <div class="flex gap-4">
+                        <button onclick="setEmpDate('existing')" id="btn-existing" class="flex-1 py-5 rounded-2xl border-2 transition-all font-black text-lg bg-blue-600 text-white border-blue-600 shadow-lg active:scale-95">לפני מרץ 2026</button>
+                        <button onclick="setEmpDate('new')" id="btn-new" class="flex-1 py-5 rounded-2xl border-2 transition-all font-black text-lg bg-slate-50 border-slate-200 text-slate-400 active:scale-95">אחרי מרץ 2026</button>
+                    </div>
+                </div>
+
+                <div id="existing-questions" class="space-y-10 text-right">
+                    <!-- שלב 2 -->
+                    <div class="bg-orange-50/60 p-6 rounded-3xl border border-orange-100 text-right">
+                        <label class="block text-lg font-black text-orange-900 mb-4 leading-tight text-right">2. מה הוותק המקצועי שלך (בשנים)?</label>
+                        <input type="number" id="seniorityInput" oninput="handleSeniorityChange()" placeholder="הכניסו מספר שנים" class="w-full p-4 border-2 rounded-xl border-slate-200 font-black text-xl text-blue-600 bg-white outline-none focus:border-orange-400 text-center transition-all">
+                    </div>
+
+                    <!-- שלב 3 -->
+                    <div class="bg-blue-50/60 p-6 rounded-3xl border border-blue-100 text-right">
+                        <label class="block text-lg font-black text-blue-900 mb-4 italic text-right">3. סטטוס גמול א'</label>
+                        <div class="space-y-4">
+                            <div onclick="toggleGmulA()" class="flex items-center gap-4 p-5 bg-white rounded-2xl border border-blue-200 cursor-pointer shadow-sm justify-start active:scale-95 transition-all">
+                                <div id="chk-gmulA" class="w-7 h-7 rounded-lg border-2 flex items-center justify-center transition-all bg-white border-slate-300 shrink-0">
+                                    <i data-lucide="check" class="text-white hidden w-5 h-5"></i>
+                                </div>
+                                <span class="font-black text-slate-700 text-xl text-right select-none">כבר יש לי גמול א' מלא</span>
+                            </div>
+                            
+                            <div id="learningA-area" onclick="toggleLearningA()" class="flex items-center gap-4 p-5 bg-white rounded-2xl border border-blue-200 cursor-pointer shadow-sm justify-start active:scale-95 transition-all">
+                                <div id="chk-learningA" class="w-7 h-7 rounded-lg border-2 flex items-center justify-center transition-all bg-white border-slate-300 shrink-0">
+                                    <i data-lucide="check" class="text-white hidden w-5 h-5"></i>
+                                </div>
+                                <span class="font-black text-slate-700 text-xl text-right select-none">אני לומד כרגע לגמול א'</span>
+                            </div>
+                        </div>
+
+                        <div id="gmulA-slider" class="hidden mt-6 space-y-8 bg-white p-6 rounded-2xl border border-slate-200 shadow-inner text-right">
+                            <div class="text-center">
+                                <span class="block text-sm font-bold text-slate-400 mb-1 text-right leading-tight">שעות נדרשות לפי הטבלה הרשמית (מחושב לפי הוותק):</span>
+                                <span id="targetHoursCalculated" class="text-3xl font-black text-blue-600">500</span>
+                                <input type="number" id="targetHours" value="500" class="hidden">
+                            </div>
+                            <div class="px-2">
+                                <input type="range" id="hourRange" min="0" max="1200" value="0" oninput="updateHours()" class="w-full h-6 bg-slate-100 rounded-full appearance-none cursor-pointer">
+                                <div class="flex justify-between text-xs font-black mt-4 text-blue-800 bg-blue-50 p-4 rounded-xl items-center">
+                                    <span>0 שעות</span>
+                                    <span id="completedDisplay" class="bg-blue-600 text-white px-5 py-1 rounded-full shadow-md">0 שעות למדתי</span>
+                                    <span id="targetDisplay">מתוך 500</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- שלב 4 -->
+                    <div class="bg-indigo-50/60 p-6 rounded-3xl border border-indigo-100 text-right">
+                        <label class="block text-lg font-black text-indigo-900 mb-4 italic text-right">4. סטטוס גמול ב'</label>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div onclick="toggleGmulB()" class="flex items-center gap-4 p-5 bg-white rounded-2xl border border-indigo-200 cursor-pointer shadow-sm justify-start active:scale-95 transition-all">
+                                <div id="chk-gmulB" class="w-7 h-7 rounded-lg border-2 flex items-center justify-center transition-all bg-white border-slate-300 shrink-0">
+                                    <i data-lucide="check" class="text-white hidden w-5 h-5"></i>
+                                </div>
+                                <span class="font-black text-slate-700 text-lg text-right select-none">יש לי גמול ב' מלא</span>
+                            </div>
+                            <div onclick="toggleLearningB()" class="flex items-center gap-4 p-5 bg-white rounded-2xl border border-indigo-200 cursor-pointer shadow-sm justify-start active:scale-95 transition-all">
+                                <div id="chk-learningB" class="w-7 h-7 rounded-lg border-2 flex items-center justify-center transition-all bg-white border-slate-300 shrink-0">
+                                    <i data-lucide="check" class="text-white hidden w-5 h-5"></i>
+                                </div>
+                                <span class="font-black text-slate-700 text-lg text-right select-none">אני לומד עכשיו לגמול ב'</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Result Box -->
+                <div class="mt-10 p-8 bg-slate-900 text-white rounded-[2.5rem] shadow-2xl relative overflow-hidden border-4 border-white/5 text-right">
+                    <h3 class="text-2xl font-black mb-8 border-b border-slate-800 pb-6 text-blue-100 flex items-center gap-3 justify-start text-right">
+                        <i data-lucide="award" class="text-blue-400 w-8 h-8"></i> מה קורה אצלך בשכר?
+                    </h3>
+                    <div id="result-text" class="space-y-6 text-right">
+                        <!-- JS injects results here -->
+                    </div>
+                </div>
+            </section>
+            
+            <button onclick="copyCurrentUrl()" class="w-full bg-white text-slate-900 py-5 rounded-2xl font-black border-2 border-slate-100 shadow-md flex items-center justify-center gap-2 mb-4 active:scale-95 transition-all">
+                העתקת קישור למדריך לשיתוף <i data-lucide="share-2" class="w-5 h-5"></i>
+            </button>
+        </div>
+
+        <footer class="text-center py-12 opacity-40 border-t border-slate-200 mt-12 text-center">
+            <p class="font-black text-sm text-center">מוגש לכם בשיתוף ועד העובדים</p>
+            <p class="text-[10px] mt-1 italic text-center text-slate-600 leading-tight">המידע מבוסס על הסכם 2026. המדריך נועד להמחשה בלבד, הנוסח המחייב הוא ההסכם המלא.</p>
+        </footer>
+    </div>
+
+    <script>
+        function initIcons() { if (window.lucide) { lucide.createIcons(); } }
+
+        let currentTab = 'flyer';
+        let empStatus = 'existing';
+        let hasGmulA = false;
+        let isLearningA = false;
+        let hasGmulB = false;
+        let isLearningB = false;
+
+        function switchTab(tab) {
+            currentTab = tab;
+            document.getElementById('content-flyer').style.display = tab === 'flyer' ? 'block' : 'none';
+            document.getElementById('content-simulator').style.display = tab === 'simulator' ? 'block' : 'none';
+            document.getElementById('tab-flyer').className = tab === 'flyer' ? 'tab-active flex-1 py-4 px-3 rounded-2xl font-black flex items-center justify-center gap-2 transition-all' : 'text-slate-400 flex-1 py-4 px-3 rounded-2xl font-black flex items-center justify-center gap-2 transition-all';
+            document.getElementById('tab-simulator').className = tab === 'simulator' ? 'tab-active flex-1 py-4 px-3 rounded-2xl font-black flex items-center justify-center gap-2 transition-all' : 'text-slate-400 flex-1 py-4 px-3 rounded-2xl font-black flex items-center justify-center gap-2 transition-all';
+            if (tab === 'simulator') renderResults();
+            initIcons();
+            window.scrollTo(0, 0);
+        }
+
+        function setEmpDate(type) {
+            empStatus = type;
+            document.getElementById('btn-existing').className = type === 'existing' ? 'flex-1 py-5 rounded-2xl border-2 transition-all font-black text-lg bg-blue-600 text-white border-blue-600 shadow-lg' : 'flex-1 py-5 rounded-2xl border-2 transition-all font-black text-lg bg-slate-50 border-slate-200 text-slate-400';
+            document.getElementById('btn-new').className = type === 'new' ? 'flex-1 py-5 rounded-2xl border-2 transition-all font-black text-lg bg-blue-600 text-white border-blue-600 shadow-lg' : 'flex-1 py-5 rounded-2xl border-2 transition-all font-black text-lg bg-slate-50 border-slate-200 text-slate-400';
+            document.getElementById('existing-questions').style.display = type === 'new' ? 'none' : 'block';
+            renderResults();
+        }
+
+        function handleSeniorityChange() {
+            const years = parseInt(document.getElementById('seniorityInput').value || 0);
+            let req = 500;
+            if (years < 1) req = 1200;
+            else if (years < 2) req = 1100;
+            else if (years < 4) req = 1000;
+            else if (years < 6) req = 900;
+            else if (years < 8) req = 800;
+            else if (years < 10) req = 700;
+            else if (years < 12) req = 600;
+            else req = 500;
+            
+            document.getElementById('targetHours').value = req;
+            document.getElementById('targetHoursCalculated').innerText = req;
+            updateHours();
+        }
+
+        function toggleGmulA() { hasGmulA = !hasGmulA; if (hasGmulA) isLearningA = false; updateGmulAUI(); renderResults(); }
+        function toggleLearningA() { if (hasGmulA) return; isLearningA = !isLearningA; updateGmulAUI(); renderResults(); }
+
+        function updateGmulAUI() {
+            const cA = document.getElementById('chk-gmulA');
+            const cLA = document.getElementById('chk-learningA');
+            cA.className = hasGmulA ? 'w-7 h-7 rounded-lg border-2 flex items-center justify-center transition-all bg-blue-600 border-blue-600 shadow-inner shrink-0' : 'w-7 h-7 rounded-lg border-2 flex items-center justify-center transition-all bg-white border-slate-300 shrink-0';
+            cA.querySelector('i').style.display = hasGmulA ? 'block' : 'none';
+            cLA.className = isLearningA ? 'w-7 h-7 rounded-lg border-2 flex items-center justify-center transition-all bg-blue-600 border-blue-600 shadow-inner shrink-0' : 'w-7 h-7 rounded-lg border-2 flex items-center justify-center transition-all bg-white border-slate-300 shrink-0';
+            cLA.querySelector('i').style.display = isLearningA ? 'block' : 'none';
+            document.getElementById('learningA-area').style.display = hasGmulA ? 'none' : 'flex';
+            document.getElementById('gmulA-slider').style.display = isLearningA ? 'block' : 'none';
+        }
+
+        function toggleGmulB() { hasGmulB = !hasGmulB; if (hasGmulB) isLearningB = false; updateGmulBUI(); renderResults(); }
+        function toggleLearningB() { if (hasGmulB) return; isLearningB = !isLearningB; updateGmulBUI(); renderResults(); }
+
+        function updateGmulBUI() {
+            const cB = document.getElementById('chk-gmulB');
+            const cLB = document.getElementById('chk-learningB');
+            cB.className = hasGmulB ? 'w-7 h-7 rounded-lg border-2 flex items-center justify-center transition-all bg-blue-600 border-blue-600 shadow-inner shrink-0' : 'w-7 h-7 rounded-lg border-2 flex items-center justify-center transition-all bg-white border-slate-300 shrink-0';
+            cB.querySelector('i').style.display = hasGmulB ? 'block' : 'none';
+            cLB.className = isLearningB ? 'w-7 h-7 rounded-lg border-2 flex items-center justify-center transition-all bg-blue-600 border-blue-600 shadow-inner shrink-0' : 'w-7 h-7 rounded-lg border-2 flex items-center justify-center transition-all bg-white border-slate-300 shrink-0';
+            cLB.querySelector('i').style.display = isLearningB ? 'block' : 'none';
+        }
+
+        function updateHours() {
+            const target = parseInt(document.getElementById('targetHoursCalculated').innerText);
+            const range = document.getElementById('hourRange');
+            range.max = Math.max(target, 1200);
+            document.getElementById('targetDisplay').innerText = "מתוך " + target;
+            document.getElementById('completedDisplay').innerText = range.value + " שעות למדתי";
+            renderResults();
+        }
+
+        function renderResults() {
+            const container = document.getElementById('result-text');
+            if (!container) return;
+            let html = '';
+            const suffix = ". החל מקורסים שיפתחו לרישום בנובמבר 2026 ויתחילו ב-1.1.2027";
+
+            if (empStatus === 'existing') {
+                if (hasGmulA) {
+                    html += '<div class="flex gap-4 items-center bg-white/10 p-4 rounded-2xl justify-start text-right"><i data-lucide="check-circle-2" class="text-emerald-400 shrink-0"></i> <span class="text-xl">גמול א\' <strong>ממשיך להיות משולם</strong> כרגיל.</span></div>';
+                } else if (isLearningA) {
+                    const target = parseInt(document.getElementById('targetHoursCalculated').innerText || 500);
+                    const val = parseInt(document.getElementById('hourRange').value || 0);
+                    if (val >= target) html += '<div class="flex gap-4 items-center bg-white/10 p-4 rounded-2xl justify-start text-right"><i data-lucide="check-circle-2" class="text-emerald-400 shrink-0"></i> <span class="text-xl">גמול א\' (328 ₪) <strong>ממשיך להיות משולם</strong>.</span></div>';
+                    else if (val > 0) html += '<div class="flex gap-4 items-center bg-white/10 p-4 rounded-2xl justify-start text-right"><i data-lucide="info" class="text-blue-300 shrink-0"></i> <span class="text-xl text-white">תקבל תשלום יחסי (כ-' + Math.round((val/target)*328) + ' ₪) שימשיך להיות משולם.</span></div>';
+                }
+
+                if (hasGmulB) {
+                    html += '<div class="flex gap-4 items-center bg-white/10 p-4 rounded-2xl justify-start text-right"><i data-lucide="check-circle-2" class="text-emerald-400 shrink-0"></i> <span class="text-xl">גמול ב\' <strong>ממשיך להיות משולם</strong> כרגיל.</span></div>';
+                } else if (isLearningB) {
+                    html += '<div class="flex gap-4 items-center bg-white/10 p-4 rounded-2xl justify-start text-right"><i data-lucide="graduation-cap" class="text-yellow-400 shrink-0"></i> <span class="text-xl"><strong>תסיים את הלימודים, והגמול ממשיך להיות משולם.</strong></span></div>';
+                }
+
+                html += '<div class="p-6 bg-blue-800/40 rounded-3xl mt-4 border border-white/10 shadow-inner text-right">' +
+                            '<p class="flex gap-3 items-start font-black text-blue-100 text-lg justify-start text-right">' +
+                                '<i data-lucide="trending-up" class="text-blue-300 shrink-0 w-6 h-6"></i>' +
+                                '<span>הצעד הבא: בנוסף לגמול הקיים, תוכל לצבור שעות לרמה המקצועית החדשה' + suffix + '.</span>' +
+                            '</p>' +
+                         '</div>';
+            } else {
+                html += '<div class="p-6 bg-blue-800/40 rounded-3xl border border-white/10 shadow-inner text-right">' +
+                            '<p class="flex gap-3 items-start font-black text-blue-100 text-lg justify-start text-right">' +
+                                '<i data-lucide="trending-up" class="text-blue-300 shrink-0 w-6 h-6"></i>' +
+                                '<span>הצעד הבא: מסלול הקידום שלך הוא דרך הרמות המקצועיות החדשות' + suffix + '.</span>' +
+                            '</p>' +
+                         '</div>';
+            }
+            container.innerHTML = html;
+            initIcons();
+        }
+
+        function copyCurrentUrl() {
+            const url = window.location.href;
+            if (url.startsWith('blob:') || url.startsWith('file:')) {
+                showToast("יש להעלות את הקובץ (ZIP) לאתר כדי לקבל לינק שניתן לשתף.");
+                return;
+            }
+            const temp = document.createElement("input");
+            document.body.appendChild(temp);
+            temp.value = url; temp.select();
+            document.execCommand("copy");
+            document.body.removeChild(temp);
+            showToast("הקישור הועתק בהצלחה!");
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('share-toast');
+            toast.innerText = msg;
+            toast.style.opacity = '1';
+            setTimeout(() => toast.style.opacity = '0', 4000);
+        }
+
+        window.onload = () => {
+            renderResults();
+            initIcons();
+        };
+    </script>
+</body>
+</html>
